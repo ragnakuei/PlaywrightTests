@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Todo</h1>
+</div>
+
+<div>
+    <label>請輸入 Todo Item：</label>
+    <input type="text" id="todoItem" />
+    <button id="addTodoItem">新增</button>
+</div>
+
+<ul class="todo-items"></ul>
+
+
+<script>
+
+    const todoItemDom = document.getElementById('todoItem');
+
+    const addTodoItemDom = document.getElementById('addTodoItem');
+    addTodoItemDom.addEventListener('click', () => {
+        todoItems.push(todoItemDom.value);
+        RenderTodoItems();
+        todoItemDom.value = '';
+    });
+    
+    const todoItems = [];
+    const todoItemsDom = document.querySelector('.todo-items');
+    
+    function RenderTodoItems() {
+        todoItemsDom.innerHTML = '';
+        todoItems.forEach(todoItem => {
+            const li = document.createElement('li');
+            li.innerText = todoItem;
+            todoItemsDom.appendChild(li);
+        })
+    }
+
+</script>
